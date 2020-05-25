@@ -1,0 +1,149 @@
+import java.util.Scanner;
+
+public class TestDemo{
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        fac(n).sout
+    }
+    public static int fac(int n){
+        if(n == 1){
+            return 1;
+        }
+        return n*fac(n-1);
+    }
+
+
+    public static void main66(String[] args) {
+        int n = 10;
+        System.out.println(sum(n));
+    }
+    public static int sum(int n){
+        if (n == 1) {
+            return 1;
+        }
+        return n+sum(n-1);
+    }
+
+
+
+    public static void main51(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入一个整数： ");
+        int num = scanner.nextInt();
+        print(num);
+    }
+    public static void print(int n){
+        if (n>9){
+            print(n/10);
+        }
+        System.out.println(n % 10);
+    }
+
+
+
+    public static void main13(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入一个非负整数：");
+        int num = scanner.nextInt();
+        System.out.println(add(num));
+    }
+    public static int add(int n){
+        if(n < 10){
+            return n;
+        }
+        return (n%10 + add(n/10));
+    }
+
+
+
+    public static int fibonacci(int num){
+        if(num == 1 || num == 2){
+            return 1;
+        }else{
+            return fibonacci(num-1)+fibonacci(num-2);
+        }
+    }
+    public static void main21(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("您要求第几项，请输入一个大于0的数：");
+        int n = scanner.nextInt();
+        int ret = fibonacci(n);
+        System.out.println(ret);
+    }
+
+    static int iii = 0;
+    public static void main14(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入盘子数量：");
+        int n = scanner.nextInt();
+        hanoi(n,'a','b','c');
+        System.out.println();
+        System.out.println("一共移动了 "+iii+" 次");
+    }
+    public static void hanoi(int n, char a, char b, char c){
+        if (n == 1) {
+            move(a,c);
+            return;
+        }
+        hanoi(n-1,a,c,b);
+        move(a,c);
+        hanoi(n-1,b,a,c);
+    }
+    public static void move(char a, char c){
+        iii++;
+        System.out.print(a+">"+c+" ");
+    }
+
+
+
+
+    public static void main12(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入台阶数n： ");
+        int n = scanner.nextInt();
+        System.out.println("共有"+ jump(n)+"种跳法");
+    }
+    public static int jump(int n){
+        if(n == 0){
+            return 1;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        return jump(n-1) + jump(n-2);
+    }
+
+
+
+
+
+
+
+    public static void main1(String[] args) {
+        Men men = new Men();
+        men.setAge(54);
+        System.out.println(men.getAge());
+
+    }
+
+
+}
+
+class Men{
+    private String name;
+    private int age;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
