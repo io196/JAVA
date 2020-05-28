@@ -1,0 +1,50 @@
+//import java.util.Scanner;
+//
+//class Calculator{
+//    private int num1;
+//    private int num2;
+//
+//    public int getNum1() {
+//        return num1;
+//    }
+//
+//    public void setNum1(int num1) {
+//        this.num1 = num1;
+//    }
+//
+//    public int getNum2() {
+//        return num2;
+//    }
+//  add  sub mul dev
+//    public void setNum2(int num2) {
+//        this.num2 = num2;
+//    }
+//    public int add(int num1,int num2){
+//        return num1+num2;
+//    }
+//    public int difference(int num1,int num2){
+//        return num1-num2;
+//    }
+//    public int product(int num1,int num2){
+//        return num1*num2;
+//    }
+//    public double quotient(int num1,int num2){
+//        return num1*1.0/num2;
+//    }
+//}
+//
+//public class HomeWork{
+//    public static void main(String[] args) {
+//        System.out.println("请输入两个整数： ");
+//        Calculator calculator = new Calculator();
+//        Scanner scanner = new Scanner(System.in);
+//        calculator.setNum1(scanner.nextInt()) ;
+//        calculator.setNum2(scanner.nextInt());
+//        System.out.println(calculator.add(calculator.getNum1(), calculator.getNum2()));
+//        System.out.println(calculator.difference(calculator.getNum1(), calculator.getNum2()));
+//        System.out.println(calculator.product(calculator.getNum1(), calculator.getNum2()));
+//        System.out.println(calculator.quotient(calculator.getNum1(), calculator.getNum2()));
+//    }
+//
+//}
+
