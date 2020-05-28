@@ -1,1 +1,40 @@
-1
+//import java.util.Arrays;
+//
+//public class HomeWork {
+//    public static void swap(int[] array1, int[] array2){
+//        int a = array1.length>array2.length?array1.length:array2.length;
+//        int[] s = new int[a];
+//        for(int i = 0;i < a;i++){
+//            s[i]=array1[i];
+//            array1[i]=array2[i];
+//            array2[i]=s[i];
+//        }
+//        System.out.println("array1: "+Arrays.toString(array1));
+//        System.out.println("array2: "+Arrays.toString(array2));
+//    }
+//    public static void main(String[] args) {
+//        int[] array1 = {1,3,5,7,9};
+//        int[] array2 = {0,2,4,6,8};
+//        System.out.println("array1: "+Arrays.toString(array1));
+//        System.out.println("array2: "+Arrays.toString(array2));
+//        swap(array1, array2);
+////        int[] a = array1;
+////        array1 = array2;
+////        array2 = a;
+//    }
+//}
+
+//public class HomeWork{
+//    public static void swap(int[]arr){
+//        int tmp = arr[0];
+//        arr[0] = arr[1];
+//        arr[1] = tmp;
+//
+//    }
+//    public static void main(String[] args) {
+//        int[] array = {12,23};
+//        System.out.println("array[0]= " + array[0] + "  arr[1]= " + array[1]);
+//        swap(array);
+//        System.out.println("array[0]= " + array[0] + "  arr[1]= " + array[1]);
+//    }
+//}
