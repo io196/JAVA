@@ -1,0 +1,44 @@
+//class Person{
+//    private int age;
+//    private String name;
+//
+//    public Person(){
+//
+//    }
+//    public Person(int age, String name){
+//        this.age = age;
+//        this.name = name;
+//    }
+//
+//    public void show(){
+//        System.out.println("age: " + age + " name: " + name);
+//    }
+//
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//}
+//
+//
+//public class HomeWork{
+//    public static void main(String[] args) {
+//        Person person = new Person();
+//        person.setAge(17);
+//        person.setName("ys");
+//        person.show();
+//        Person person1 = new Person(18, "ysa");
+//        person1.show();
+//    }
+//}
