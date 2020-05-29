@@ -1,0 +1,31 @@
+//    public static String toString(int[]array){
+//        String c = "[";
+//        for (int i = 0; i < array.length; i++){
+//
+//            if (i != array.length - 1){
+//                c = c + array[i] + ","+" ";
+//            }else{
+//                c = c+array[i]+"]";
+//            }
+//        }
+//        return c;
+//    }
+//
+//    public static void main(String[] args) {
+//        int[]array = {1,2,3};
+//
+//        System.out.println(toString(array));
+//    }
+//
+//    public static int[] copyOf(int[] array){
+//        int[] copy = new int[array.length];
+//        for (int i = 0; i < array.length; i++){
+//            copy[i] = array[i];
+//        }
+//        return copy;
+//    }
+//
+//    public static void main4(String[] args) {
+//        int[]array = {1,2,3,4,5,6,7,8,9};
+//        System.out.println(Arrays.toString(copyOf(array)));
+//    }
