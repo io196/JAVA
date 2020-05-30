@@ -1,0 +1,140 @@
+/**
+ * 顺序表代码练习
+ *
+ */
+
+import java.util.Arrays;
+
+public class MyArrayList {
+    private int[] elem;
+    private int useSide;
+    private static final int DEFAULT_SIZE = 4;
+
+    public MyArrayList(){
+        this.elem = new int[DEFAULT_SIZE];
+        this.useSide = 0;
+    }
+
+    public void display(){                //打印顺序表
+        for (int i=0; i<this.useSide; i++){
+            System.out.print(this.elem[i] + " ");
+        }
+        System.out.println();
+    }
+
+    private void checkPos(int pos){           //检查pos位置合法性
+        if (pos<0 || pos>this.useSide){
+            throw new ArrayIndexOutOfBoundsException("pos位置不合法");
+        }
+    }
+
+    public void add(int pos, int data){          //在pos位置插入一个新的数据data
+        if (this.useSide == this.elem.length){
+            this.elem = Arrays.copyOf(this.elem,this.elem.length*2);
+        }
+        checkPos(pos);
+        for (int i=useSide-1; i>=pos; i--){
+            this.elem[i+1] = this.elem[i];
+        }
+        this.elem[pos] = data;
+        this.useSide++;
+    }
+
+    public boolean contains(int toFind) {    //判断是否包含某个元素
+        if (this.useSide==0){
+            System.out.println("顺序表为空");
+        }else {
+            for (int i=0; i<this.useSide; i++){
+                if (this.elem[i]==toFind){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int search(int toFind){            // 查找某个元素对应的位置
+        if (this.useSide==0){
+            System.out.println("顺序表为空");
+        }else {
+            for (int i=0; i<this.useSide; i++){
+                if (this.elem[i]==toFind){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int getPos(int pos) {        //获取pos位置的元素
+        if (this.useSide==0){
+            System.out.println("顺序表为空");
+        }
+        checkPos(pos);
+        if (pos==this.useSide){
+            throw new ArrayIndexOutOfBoundsException("pos位置不合法");
+        }
+        return this.elem[pos];
+    }
+    public void remove(int key) {          //删除第一次出现的关键字key
+        int f = search(key);
+        if (f==-1){
+            System.out.println(key + "不存在");
+            return;
+        }
+        for (int i=f; i<this.useSide-1; i++){
+            this.elem[i] = this.elem[i+1];
+        }
+        useSide--;
+    }
+    public int size(){             //求顺序表的长度
+        return this.useSide;
+    }
+    public void clear(){            //清空顺序表
+        this.useSide = 0;
+    }
+
+
+        public int[] getElem() {
+        return elem;
+    }
+
+    public void setElem(int[] elem) {
+        this.elem = elem;
+    }
+
+    public int getUseSide() {
+        return useSide;
+    }
+
+    public void setUseSide(int useSide) {
+        this.useSide = useSide;
+    }
+}
+
+
+---------------------------------
+
+
+
+public class TestDemo {
+    public static void main(String[] args) {
+
+        MyArrayList arrayList = new MyArrayList();
+
+        arrayList.add(0,11);
+        arrayList.add(1,22);
+        arrayList.add(2,33);
+        arrayList.add(3,44);
+        arrayList.add(4,55);
+        arrayList.display();
+//        System.out.println(arrayList.contains(11));
+//        System.out.println(arrayList.search(5));
+//        System.out.println(arrayList.getPos(5));
+//        arrayList.remove(1);
+//        arrayList.display();
+        System.out.println(arrayList.size());
+        arrayList.clear();
+        arrayList.display();
+    }
+}
