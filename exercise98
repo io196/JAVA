@@ -1,0 +1,9 @@
+public class MapArrayList {
+    private Object[] array;
+    private int size;
+
+    void add(Object o){
+        array[size] = o;
+        size++;
+    }
+}
