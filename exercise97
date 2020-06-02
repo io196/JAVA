@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedList;
+
+public class TestCollectio {
+    public static void main(String[] args) {
+        Collection<String> collection = new LinkedList<>();
+        System.out.println(collection.isEmpty());
+        System.out.println(collection.size());
+        System.out.println("=============");
+        collection.add("我爱java");
+        collection.add("爱");
+        collection.add("爱");
+        collection.add("java");
+        System.out.println(collection.size());
+        Object[] array = collection.toArray();
+        System.out.println(collection);
+//        System.out.println(Arrays.toString(array));
+        System.out.println("===============");
+        for (String s:collection) {
+            System.out.println(s);
+        }
+        System.out.println("===============");
+        System.out.println(collection.contains("java"));
+        System.out.println("===============");
+        collection.remove("爱");
+        System.out.println(collection);
+        for(String s : collection){
+            System.out.println(s);
+        }
+        System.out.println("===============");
+        collection.clear();
+        System.out.println(collection);
+    }
+}
