@@ -38,7 +38,6 @@ public class Poker {
     }
 
 
-
     public static void main(String[] args) {
         //买牌
         List<Card>poker = buyPoker();
@@ -63,7 +62,5 @@ public class Poker {
         System.out.println("3号玩家手牌： ");
         System.out.println(players.get(2));
        // System.out.println(poker);
-
-
     }
 }
