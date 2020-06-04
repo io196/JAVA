@@ -1,0 +1,31 @@
+//
+//public class MyArrayList{
+//
+//    //1,这个数一定在trust【】【1】位置出现 N-1 次；
+//    //2，这个数没在trust【0】【】位置出现过。
+//    public int findJudge(int N, int[][] trust){
+//        int count = 0;
+//        int ret = 0;
+//        for (int i=1; i<=N; i++){
+//            for (int j=0; j<trust.length; j++){
+//                if (trust[j][1] == i){
+//                    count++;
+//                    }
+//                if (count == N-1){
+//                    ret = i;
+//                    for (int k=0; k<trust.length; k++){
+//                        if (trust[0][k] == ret){
+//                            return -1;
+//                        }
+//                    }
+//                    return i;
+//                }
+//            }
+//        }
+////        for (int i=0; i<trust.length; i++){
+////            for (int j=0; j<N; j++){
+////                if (trust[i][1] == )
+////            }
+////        }
+//    }
+//}
