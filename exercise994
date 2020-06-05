@@ -1,1 +1,38 @@
-0429
+public class MyList {
+    private int[] array = new int[100];
+    private int size = 0;
+
+    public void push(int val){
+        array[size] = val;
+        size++;
+    }
+
+    public Integer pop(){
+        if (size <= 0){
+            return null;
+        }
+        int ret = array[size-1];
+        size--;
+        return ret;
+    }
+    public Integer peek(){
+        if (size <= 0){
+            return null;
+        }
+        return array[size - 1];
+    }
+
+    public static void main(String[] args) {
+        MyList myList = new MyList();
+        myList.push(8);
+        myList.push(45);
+        myList.push(32);
+        myList.push(56);
+        myList.push(7);
+        System.out.println(myList.peek());
+        System.out.println("================");
+        while (myList.size != 0){
+            System.out.print(myList.pop() + " ");
+        }
+    }
+}
