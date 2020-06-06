@@ -1,0 +1,51 @@
+//顺序表实现队列
+public class MyQueue2 {
+    private int[] array = new int[100];
+    private int head = 0;
+    private int tail = 0;
+    private int size = 0;
+
+    public boolean offer(int val){
+        if (size == array.length){
+            return false;
+        }
+        array[tail] = val;
+        tail++;
+        tail = tail % array.length;
+        size++;
+        return true;
+    }
+
+    public Integer poll(){
+        if (size == 0){
+            return null;
+        }
+        int ret = array[head];
+        head++;
+        if (head >= array.length){
+            head = 0;
+        }
+        size--;
+        return ret;
+    }
+    public Integer peek(){
+        if (size == 0){
+            return null;
+        }
+        return array[head];
+    }
+    public static void main(String[] args) {
+        MyQueue2 myQueue2 = new MyQueue2();
+        myQueue2.offer(12);
+        myQueue2.offer(45);
+        myQueue2.offer(22);
+        myQueue2.offer(1);
+        System.out.println(myQueue2.peek());
+        System.out.println("==============");
+        int ret = 0;
+        while (myQueue2.size != 0){
+            ret = myQueue2.poll();
+            System.out.print(ret + " ");
+        }
+    }
+}
