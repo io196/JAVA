@@ -1,1 +1,55 @@
-MyQueue 
+//链表实现队列
+//链表头部作为队首，链表尾部作为队尾，带傀儡节点
+public class MyQueue {
+    static class Node{
+        int val;
+        Node next;
+
+        public Node(int val) {
+            this.val = val;
+        }
+    }
+    Node head = new Node(-1);
+    Node tail = head;
+    public void offer(int val){
+        Node newNode = new Node(val);
+        tail.next = newNode;
+        tail = tail.next;
+    }
+    public Integer poll(){
+        if (head.next == null){
+            return null;
+        }
+        Node toDelete = head.next;
+        head.next = toDelete.next;
+        if (head.next == null){
+            tail = head;
+        }
+        return toDelete.val;
+    }
+    public Integer peek(){
+        if (head.next == null){
+            return null;
+        }
+        return head.next.val;
+    }
+
+
+    public static void main(String[] args) {
+        MyQueue myQueue = new MyQueue();
+        myQueue.offer(1);
+        myQueue.offer(2);
+        myQueue.offer(3);
+        myQueue.offer(4);
+        myQueue.offer(5);
+        Node cur = myQueue.head.next;
+        while (cur != null){
+            System.out.print(cur.val + " ");
+            cur = cur.next;
+        }
+//        System.out.println(myQueue.poll());
+//        System.out.println(myQueue.tail.val);
+//        System.out.println("======================");
+//        System.out.println(myQueue.head.next.val);
+    }
+}
