@@ -20,6 +20,7 @@ public class BookList {
 //    public void setBooks(Book[] books) {
 //        this.books = books;
 //    }
+
     public Book getBook(int pos) {
         return books[pos];
     }
