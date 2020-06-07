@@ -1,0 +1,30 @@
+package com.ys.operation;
+
+import com.ys.book.Book;
+import com.ys.book.BookList;
+
+import java.util.Scanner;
+
+public class DelOperation implements IOperation{
+    @Override
+    public void work(BookList bookList) {
+        System.out.println("删除书籍");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入要删除的书名");
+        String name = scanner.nextLine();
+
+        for (int i = 0; i < bookList.getUsedSize(); i++){
+            Book book = bookList.getBook(i);
+            if (book.getName().equals(name)){
+                while (i < bookList.getUsedSize()-1){
+                    bookList.setBooks(i, bookList.getBook(i+1));
+//                    bookList.getBook(i) = bookList.getBook(i+1); 错误原因，不能用get设置get
+                }
+                bookList.setUsedSize(i);
+                System.out.println("删除成功！");
+                return;
+            }
+        }
+        System.out.println("没有这本书！");
+    }
+}
