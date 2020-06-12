@@ -1,0 +1,71 @@
+package com.All.Heap;
+
+import java.util.Arrays;
+
+public class Heap {
+
+    //堆的向下调整（以大堆为例）
+    public static void shiftDown(int[] array, int size, int index){
+        int parent = index;
+        int child = 2 * parent + 1;
+        while (child < size){
+            if (child + 1 < size && array[child] < array[child + 1]){
+                child = child + 1;
+            }
+            if (array[child] > array[parent]){
+                int tmp = array[child];
+                array[child] = array[parent];
+                array[parent] = tmp;
+            }else {
+                break;
+            }
+            parent = child;
+            child = 2 * parent + 1;
+        }
+    }
+
+    //堆的向上调整（以大堆为例）
+    public static void shiftUp(int[] array, int size, int index){
+        int child = index;
+        int parent = (child - 1) / 2;
+        while (child > 0){
+            if (array[parent] < array[child]){
+                int tmp = array[child];
+                array[child] = array[parent];
+                array[parent] = tmp;
+            }else {
+                break;
+            }
+//            child = parent;
+//            parent = (child - 1) / 2;
+            //这两行貌似不需要也行？
+        }
+    }
+
+    public static void creatHeap(int[] array, int size){
+        //从后向前遍历
+        //从最后一个非叶子节点开始
+        //依次进行向下调整
+        for (int i = (size - 1 - 1) / 2; i >= 0; i--){
+            shiftDown(array, size, i);
+        }
+    }
+
+    public static void creatHeap2(int[] array, int size){
+        for (int i = size - 1; i >= 0; i--){
+            shiftUp(array, size, i);
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] array = {1,2,3,4,5,6,7,8,9};
+        creatHeap(array,9);
+        System.out.println(Arrays.toString(array));
+        System.out.println("----------------------");
+        int[] array1 = {1,2,3,4,5,6,7,8,9};
+        creatHeap2(array1, 9);
+        System.out.println(Arrays.toString(array));
+    }
+}
