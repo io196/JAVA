@@ -1,1 +1,61 @@
 public class TreeInterview {
+    static class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public static TreeNode build(){
+        TreeNode node0 = new TreeNode(1);
+        TreeNode node01 = new TreeNode(1);
+        TreeNode node02 = new TreeNode(1);
+        TreeNode node11 = new TreeNode(1);
+        TreeNode node12 = new TreeNode(1);
+        TreeNode node21 = new TreeNode(1);
+        TreeNode node22 = new TreeNode(1);
+
+        node0.left = node01;
+        node0.right = node02;
+        node01.left = node11;
+        node01.right = node12;
+        node02.left = node21;
+        node02.right = node22;
+        return node0;
+    }
+
+    //判断两个树是否相同
+    public static boolean isSameTree(TreeNode p, TreeNode q){
+        if (p == null && q == null){
+            return true;
+        }
+        if (p == null || q == null){
+            return false;
+        }
+        return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
+    //判断 q 是不是 p 的子树
+    public static boolean isSubTree(TreeNode p, TreeNode q){
+        if (p == null){
+            return false;
+        }
+        return isSameTree(p, q) || isSubTree(p.left, q) ||isSubTree(p.right, q);
+    }
+
+    //求二叉树的最大深度
+    public static int maxDepth(TreeNode p){
+        if (p == null){
+            return 0;
+        }
+        if (p.left == null && p.right == null){
+            return 1;
+        }
+        int leftDepth = maxDepth(p.left);
+        int rightDepeh = maxDepth(p.right);
+        return 1 + (leftDepth > rightDepeh ? leftDepth : rightDepeh);
+    }
+}
