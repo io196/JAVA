@@ -1,0 +1,136 @@
+package ys_0528;
+
+//设计实现双端队列。
+//        你的实现需要支持以下操作：
+//
+//        MyCircularDeque(k)：构造函数,双端队列的大小为k。
+//        insertFront()：将一个元素添加到双端队列头部。 如果操作成功返回 true。
+//        insertLast()：将一个元素添加到双端队列尾部。如果操作成功返回 true。
+//        deleteFront()：从双端队列头部删除一个元素。 如果操作成功返回 true。
+//        deleteLast()：从双端队列尾部删除一个元素。如果操作成功返回 true。
+//        getFront()：从双端队列头部获得一个元素。如果双端队列为空，返回 -1。
+//        getRear()：获得双端队列的最后一个元素。 如果双端队列为空，返回 -1。
+//        isEmpty()：检查双端队列是否为空。
+//        isFull()：检查双端队列是否满了。
+
+import java.util.Arrays;
+
+public class MyCircularDeque {
+    private int[] deque;
+    private int size;
+//    private int head;
+//    private int tail;
+       /** Initialize your data structure here. Set the size of the deque to be k. */
+    public MyCircularDeque(int k) {
+        this.deque = new int[k];
+        this.size = 0;
+//        this.head = 0;
+//        this.tail = 0;
+    }
+
+    /** Adds an item at the front of Deque. Return true if the operation is successful. */
+    public boolean insertFront(int value) {
+        if (isFull()){
+            return false;
+        }
+        if (isEmpty()){
+            deque[0] = value;
+            size = 1;
+            return true;
+        }
+        for (int i = size - 1; i >= 0; i--){
+            deque[i + 1] = deque[i];
+        }
+        deque[0] = value;
+        size++;
+        return true;
+    }
+
+    /** Adds an item at the rear of Deque. Return true if the operation is successful. */
+    public boolean insertLast(int value) {
+        if (isFull()){
+            return false;
+        }
+        deque[size] = value;
+        size++;
+        return true;
+    }
+
+    /** Deletes an item from the front of Deque. Return true if the operation is successful. */
+    public boolean deleteFront() {
+        if (isEmpty()){
+            return false;
+        }
+        deque[0] = 0;
+        for (int i = 0; i < size - 1; i++){
+            deque[i] = deque[i + 1];
+        }
+//        deque[deque.length - 1] = 0;
+        size--;
+        return true;
+    }
+
+    /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
+    public boolean deleteLast() {
+        if (isEmpty()){
+            return false;
+        }
+        size--;
+        return true;
+
+    }
+
+    /** Get the front item from the deque. */
+    public int getFront() {
+        if (isEmpty()){
+            return -1;
+        }
+        return deque[0];
+    }
+
+    /** Get the last item from the deque. */
+    public int getRear() {
+        if (isEmpty()){
+            return -1;
+        }
+        return deque[size - 1];
+    }
+
+    /** Checks whether the circular deque is empty or not. */
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    /** Checks whether the circular deque is full or not. */
+    public boolean isFull() {
+        return size == deque.length;
+    }
+
+    public void myString() {
+        for (int i =0; i < size; i++){
+            System.out.println(deque[i]);
+        }
+        System.out.println("size: " + size);
+        return;
+    }
+
+
+
+    public static void main(String[] args) {
+        MyCircularDeque myCircularDeque = new MyCircularDeque(5);
+//        System.out.println(myCircularDeque.insertFront(1));
+//        myCircularDeque.insertLast(5);
+//        myCircularDeque.insertFront(3);
+//        myCircularDeque.insertFront(4);
+//        myCircularDeque.insertLast(2);
+//        System.out.println(myCircularDeque.insertLast(2));
+        myCircularDeque.insertFront(5);
+        myCircularDeque.insertFront(5);
+        myCircularDeque.insertFront(5);
+        myCircularDeque.insertFront(5);
+        myCircularDeque.insertFront(5);
+        myCircularDeque.deleteFront();
+
+        myCircularDeque.myString();
+    }
+}
