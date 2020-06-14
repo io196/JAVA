@@ -1,1 +1,38 @@
-s
+package ys_0528;
+
+import java.util.Stack;
+
+//给定 S 和 T 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 # 代表退格字符。
+//
+//        注意：如果对空文本输入退格字符，文本继续为空。
+public class Solution {
+    public boolean backspaceCompare(String S, String T) {
+
+        return ret(S).equals(ret(T));
+    }
+    public String ret(String string){
+        Stack<Character> result = new Stack();
+//        for (char c : string.toCharArray()) {
+//            if (c != '#'){
+//                result.push(c);
+//            }else if (! result.empty()){
+//                result.pop();
+//            }
+//        }
+        char[] data = string.toCharArray();
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] != '#'){
+                result.push(data[i]);
+            }else if (! result.empty()){
+                result.pop();
+            }
+        }
+        return String.valueOf(result);
+    }
+
+    public static void main(String[] args) {
+        String s = "yang shuai";
+        System.out.println(s);
+        System.out.println(String.valueOf(s));
+    }
+}
