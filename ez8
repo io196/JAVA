@@ -1,0 +1,35 @@
+package ys_0528;
+
+import java.util.Scanner;
+
+public class Solution0531 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String A = scanner.nextLine();
+        String B = scanner.nextLine();
+
+        int count = 0;
+        for (int i = 0; i <= A.length(); i++){
+            StringBuilder a = new StringBuilder(A);
+            StringBuilder ab = a.insert(i, B);
+            if (isHuiWen(ab)){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+
+    private static boolean isHuiWen(StringBuilder ab) {
+        int left = 0;
+        int right = ab.length() - 1;
+        while (left < right){
+            if (ab.charAt(left) != ab.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+}
