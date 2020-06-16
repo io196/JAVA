@@ -1,1 +1,27 @@
-0601
+package ys_0528;
+
+// 空瓶换饮料
+import java.util.Scanner;
+
+public class Solution0601 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextInt()){
+            int bottle = scanner.nextInt();
+            int ret = canDrink(bottle);
+            System.out.println(ret);
+        }
+    }
+
+    public static int canDrink(int bottle) {
+        if (bottle < 2) {
+            return 0;
+        }
+        if (bottle == 2){
+            return 1;
+        }
+        return (bottle / 3) + canDrink((bottle / 3) + bottle % 3);
+    }
+
+}
