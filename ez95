@@ -1,0 +1,21 @@
+package ys_0528;
+
+import java.util.Scanner;
+
+//给定两个字符串,删除第一个字符串中所有第二个字符串的元素;
+public class Solution0603_2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String A = scanner.nextLine();
+        String B = scanner.nextLine();
+
+        String[] a = A.split("");
+        StringBuilder ab = new StringBuilder();
+        for (int i = 0; i < a.length; i++) {
+            if (! B.contains(a[i])){
+                ab.append(a[i]);
+            }
+        }
+        System.out.println(ab.toString());
+    }
+}
