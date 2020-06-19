@@ -1,0 +1,297 @@
+package ys_0528;
+
+import java.util.Scanner;
+//二货小易放蛋糕
+public class Solution0607_1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int W = scanner.nextInt();
+        int H = scanner.nextInt();
+
+        int count = 0;
+        if (W % 4 == 1) {
+            count = (H / 4) * ((W / 4) * 2 * 4 + 2);
+            if (H % 4 ==1){
+                count = count + (W / 4) * 2 + 1;
+            } else if (H % 4 == 2) {
+                count = count + ((W / 4) * 2 + 1) * 2;
+            } else if (H % 4 == 3) {
+                count = count + ((W / 4) * 2 + 1) * 2 + (W / 4) * 2;
+            }
+        } else if (W % 4 == 2) {
+            count = (H / 4) * ((W / 4) * 2 * 4 + 4);
+            if (H % 4 ==1){
+                count = count + (W / 4) * 2 + 2;
+            } else if (H % 4 == 2) {
+                count = count + ((W / 4) * 2 + 2) * 2;
+            } else if (H % 4 == 3) {
+                count = count + ((W / 4) * 2 + 2) * 2 + (W / 4) * 2;
+            }
+        } else if (W % 4 == 3) {
+            count = (H / 4) * ((W / 4) * 2 * 4 + 6);
+            if (H % 4 ==1){
+                count = count + (W / 4) * 2 + 2;
+            } else if (H % 4 == 2) {
+                count = count + ((W / 4) * 2 + 2) * 2;
+            } else if (H % 4 == 3) {
+                count = count + ((W / 4) * 2 + 2) * 2 + (W / 4) * 2 + 1;
+            }
+        } else {
+            count = (H / 4) * ((W / 2) * 4) + (H % 4) * (W / 2);
+        }
+
+        System.out.println(count);
+    }
+}
+
+
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        int W = scanner.nextInt();
+//        int H = scanner.nextInt();
+//
+//        int count0 = 0;
+//        int count1 = 0;
+//        int count2 = 0;
+//        int count3 = 0;
+//
+////        int x = 0;
+//        for (int i = 0; i < H; i++) {
+//            if (i % 4  == 0 || i % 4  == 1 ) {
+//                if (W % 4 == 1){
+//                    count0 = (W / 4) * 2 + 1;
+//                }
+//                if (W % 4 ==2){
+//                    count1 = (W / 4) * 2 + 2;
+//                }
+//            }
+//            if (i% 4 == 2 || i% 4 == 3) {
+//                if (W % 4 == 3) {
+//                    count2 = (W / 4) * 2 + 1;
+//                }
+//                if (W % 4 == 0){
+//                    count3 = (W / 4) * 2;
+//                }
+//            }
+//        }
+//        int count_i = 0;
+//        int i = 0;
+//        while (i < W) {
+//            count_i++;
+//            i += 4;
+//        }
+//        count_i *=2;
+//        if ((i - 4 + 1) > W) {
+//            count_i -= 1;
+//        }
+//
+//        int count_j = 0;
+//        int j = 0;
+//        while (j < H) {
+//            count_j++;
+//            j += 4;
+//        }
+//        count_j *= 2;
+//        if ((j - 4 + 1) > H) {
+//            count_j -= 1;
+//        }
+//        System.out.println(count_i * count_j * 2);
+//    }
+//}
+//*package ys_0528;
+//
+//import java.util.Scanner;
+//
+//public class Solution0607_1 {
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        int W = scanner.nextInt();
+//        int H = scanner.nextInt();
+//
+//        int count = 0;
+//        int count0 = 0;
+//        count0 = (W / 4) * 2 + 1;         // w % 4 = 1
+//        int count1 = 0;
+//        count1 = (W / 4) * 2 + 2;          // w % 4 = 2
+//        int count2 = 0;
+//        count2 = (W / 4) * 2 + 1;          // w % 4 = 3
+//        int count3 = 0;
+//        count3 = (W / 4) * 2;             // w % 4 = 0
+//
+//        count = (H / 4) * (count0 + count1 + count2 +count3 );
+//        if (H % 4 == 1) {
+//            if (W % 4 == 1){
+//                count += 1;
+//            }
+//            if (W % 4 == 2){
+//                count += 2;
+//            }
+//        } else if (H % 4 == 2){
+//            if (W % 4 == 1){
+//                count += 2;
+//            }
+//            if (W % 4 == 2){
+//                count += 4;
+//            }
+//        } else if (H % 4 == 3){
+//            if (W % 4 == 3){
+//                count += 5;
+//            }
+//        }
+//        System.out.println(count);
+//
+//
+////        int x = 0;
+////        for (int i = 0; i < H; i++) {
+////            if (i == 0 || i == 1 ) {
+////                if (W % 4 == 1){
+////                    count0 = (W / 4) * 2 + 1;
+////                }
+////                if (W % 4 ==2){
+////                    count1 = (W / 4) * 2 + 2;
+////                }
+////            }
+////            if (i == 2 || i == 3) {
+////                if (W % 4 == 3) {
+////                    count2 = (W / 4) * 2 + 1;
+////                }
+////                if (W % 4 == 0){
+////                    count3 = (W / 4) * 2;
+////                }
+////            }
+////        }
+////        int count_i = 0;
+////        int i = 0;
+////        while (i < W) {
+////            count_i++;
+////            i += 4;
+////        }
+////        count_i *=2;
+////        if ((i - 4 + 1) > W) {
+////            count_i -= 1;
+////        }
+////
+////        int count_j = 0;
+////        int j = 0;
+////        while (j < H) {
+////            count_j++;
+////            j += 4;
+////        }
+////        count_j *= 2;
+////        if ((j - 4 + 1) > H) {
+////            count_j -= 1;
+////        }
+////        System.out.println(count_i * count_j * 2);
+//    }
+//}
+// */
+/*package ys_0528;
+
+import java.util.Scanner;
+
+public class Solution0607_1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int W = scanner.nextInt();
+        int H = scanner.nextInt();
+
+        int count = 0;
+//        int count0 = 0;
+//        count0 = (W / 4) * 2 + 1;         // w % 4 = 1
+//        int count1 = 0;
+//        count1 = (W / 4) * 2 + 2;          // w % 4 = 2
+//        int count2 = 0;
+//        count2 = (W / 4) * 2 + 1;          // w % 4 = 3
+//        int count3 = 0;
+//        count3 = (W / 4) * 2;             // w % 4 = 0
+//
+//        count = (H / 4) * (count0 + count1 + count2 +count3 );
+        if (W % 4 == 1) {
+            count = (H / 4) * ((W / 4) * 2 * 4 + 2);
+            if (H % 4 ==1){
+                count = count + (W / 4) * 2 + 1;
+            } else if (H % 4 == 2) {
+                count = count + ((W / 4) * 2 + 1) * 2;
+            } else if (H % 4 == 3) {
+                count = count + ((W / 4) * 2 + 1) * 2 + (W / 4) * 2;
+            }
+        } else if (W % 4 == 2) {
+            count = (H / 4) * ((W / 4) * 2 * 4 + 4);
+            if (H % 4 ==1){
+                count = count + (W / 4) * 2 + 2;
+            } else if (H % 4 == 2) {
+                count = count + ((W / 4) * 2 + 2) * 2;
+            } else if (H % 4 == 3) {
+                count = count + ((W / 4) * 2 + 2) * 2 + (W / 4) * 2;
+            }
+        } else if (W % 4 == 3) {
+            count = (H / 4) * ((W / 4) * 2 * 4 + 6);
+            if (H % 4 ==1){
+                count = count + (W / 4) * 2 + 2;
+            } else if (H % 4 == 2) {
+                count = count + ((W / 4) * 2 + 2) * 2;
+            } else if (H % 4 == 3) {
+                count = count + ((W / 4) * 2 + 2) * 2 + (W / 4) * 2 + 1;
+            }
+        } else {
+            count = (H / 4) * ((W / 2) * 4) + (H % 4) * (W / 2);
+        }
+
+//        } else if (H % 4 == 2){
+//            if (W % 4 == 1){
+//                count += 2;
+//            }
+//            if (W % 4 == 2){
+//                count += 4;
+//            }
+//        } else if (H % 4 == 3){
+//            if (W % 4 == 3){
+//                count += 5;
+//            }
+//        }
+        System.out.println(count);
+
+
+//        int x = 0;
+//        for (int i = 0; i < H; i++) {
+//            if (i == 0 || i == 1 ) {
+//                if (W % 4 == 1){
+//                    count0 = (W / 4) * 2 + 1;
+//                }
+//                if (W % 4 ==2){
+//                    count1 = (W / 4) * 2 + 2;
+//                }
+//            }
+//            if (i == 2 || i == 3) {
+//                if (W % 4 == 3) {
+//                    count2 = (W / 4) * 2 + 1;
+//                }
+//                if (W % 4 == 0){
+//                    count3 = (W / 4) * 2;
+//                }
+//            }
+//        }
+//        int count_i = 0;
+//        int i = 0;
+//        while (i < W) {
+//            count_i++;
+//            i += 4;
+//        }
+//        count_i *=2;
+//        if ((i - 4 + 1) > W) {
+//            count_i -= 1;
+//        }
+//
+//        int count_j = 0;
+//        int j = 0;
+//        while (j < H) {
+//            count_j++;
+//            j += 4;
+//        }
+//        count_j *= 2;
+//        if ((j - 4 + 1) > H) {
+//            count_j -= 1;
+//        }
+//        System.out.println(count_i * count_j * 2);
+    }
+}*/
