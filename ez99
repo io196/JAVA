@@ -1,0 +1,30 @@
+package ys_0528;
+
+import java.util.Scanner;
+//输入 N 个整数,输出出现次数大于或等于 N/2 的数;
+public class Solution0605_2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()){
+            String s = scanner.nextLine();
+            String[] s1 = s.split(" ");
+            Integer[] arr = new Integer[s1.length];
+            for (int i = 0; i < s1.length; i++) {
+                arr[i] = Integer.parseInt(s1[i]);
+            }
+
+            for (int j = 0; j < (arr.length / 2) + 1; j++) {
+                int count = 1;
+                for (int k = 0; k < arr.length; k++) {
+                    if (arr[j] - arr[k] == 0){
+                        count++;
+                    }
+                    if (count >= (arr.length / 2)){
+                        System.out.print(arr[j]);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
