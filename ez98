@@ -1,0 +1,27 @@
+package ys_0528;
+
+import java.util.Scanner;
+
+//求A,B,C三人手中的糖果数
+public class Solution0605_1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int s1, s2, s3, s4;
+        int A, B, C;
+        while (scanner.hasNextInt()) {
+            s1 = scanner.nextInt();
+            s2 = scanner.nextInt();
+            s3 = scanner.nextInt();
+            s4 = scanner.nextInt();
+            A = (s1 + s3) / 2;
+            B = (s2 + s4) / 2;
+            C = B - s2;
+            if ((B + C == s4) && ((s1 + s3) % 2 == 0) &&(((s2 + s4) % 2) == 0) && (((s3 - s1) / 2) == B)) {
+                System.out.print(A + " " + B + " " + C);
+                return;
+            } else {
+                System.out.println("No");
+            }
+        }
+    }
+}
