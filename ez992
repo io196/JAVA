@@ -1,0 +1,94 @@
+package ys_0528;
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+//每隔两个数删除一个数
+public class Solution0608_1 {
+    static void tmp(Queue A, Queue B) {
+        Queue AB =B;
+        B = A;
+        A = AB;
+    }
+    static int del(int[] a){
+        for (int i = 0; i < a.length; i++) {
+            a[i] = i;
+        }
+
+        Queue<Integer> A = new LinkedList();
+        Queue<Integer> B = new LinkedList();
+        Integer last = 0;
+        Queue AB = new LinkedList();
+        for (int i = 0; i < a.length; i++) {
+            A.offer(a[i]);
+        }
+
+        while (!A.isEmpty() || !B.isEmpty()) {
+            if (!A.isEmpty()) {
+                B.offer(A.poll());
+            } else {
+                tmp(A, B);
+                B.offer(A.poll());
+            }
+            if (!A.isEmpty()) {
+                B.offer(A.poll());
+            } else {
+                tmp(A, B);
+                B.offer(A.poll());
+            }
+            if (!A.isEmpty()) {
+                last = A.poll();
+            } else {
+                tmp(A, B);
+                last = A.poll();
+            }
+        }
+        return last;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int[] a = new int[num];
+        System.out.println(del(a));
+    }
+}
+/*package ys_0528;
+
+import java.util.Scanner;
+
+public class Solution0608_2 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int length;
+        while (scanner.hasNextInt()) {
+            length = scanner.nextInt();
+            int[] index = new int[length];
+            System.out.println(del(length, index));
+        }
+    }
+    public static int del(int l, int[] index) {
+        int i = 0;
+        int count = 0;
+        int countDel = 0;
+        while (true) {
+            if (countDel == l) {
+                return i - 1;
+            }
+            if (i == l) {
+                i = i % l;
+            }
+            if (index[i] != -1) {
+                count++;
+            }
+            if (count == 3) {
+                count = 0;
+                countDel++;
+                index[i % l] = -1;
+            }
+            i++;
+        }
+    }
+}*/
