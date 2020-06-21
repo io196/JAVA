@@ -1,0 +1,25 @@
+package ys_0528;
+
+public class ThredDemo2 {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                while (!Thread.currentThread().isInterrupted()) {
+                    System.out.println("正在数钱");
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                }
+                System.out.println("停止数钱");
+            }
+        };
+        t.start();
+        Thread.sleep(5000);
+        System.out.println("不是你的钱,别数了");
+        t.interrupt();
+    }
+}
