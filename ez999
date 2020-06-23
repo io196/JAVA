@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class Main_091 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextInt()) {
+            int n = in.nextInt();
+
+            int count = 0;
+            for (;;){
+                n = n / 5;
+                if (n == 0) {
+                    break;
+                }else {
+                    count+= n;
+                }
+            }
+//            for (int i = n; i > 4; i--) {
+//
+//            }
+//            while (n % 5 == 0) {
+//                n = n / 5;
+//                count = count + n;
+//            }
+//            if (n % 5 == 0) {
+//
+//            }
+//            long r = 1;
+//            for (int i = 2; i <= n; i++) {
+//                while (i % 5 == 0) {
+//                    count++;
+//
+//                }
+//                if (i % 2 == 0 || i % 4 == 0 || i % 5 == 0 || i % 6 == 0 || i % 8 == 0 || i % 10 == 0) {
+//                    while (i % 10 == 0) {
+//                        count++;
+//                    }
+//                    r = r * i;
+//                    while (r % 10 == 0) {
+//                        r = r / 10;
+//                        count++;
+//                    }
+//                }
+//            }
+            System.out.println(count);
+        }
+    }
+}
