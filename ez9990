@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main_092 {
+    public static void main(String [] args){
+        Scanner in = new Scanner(System.in);
+        int a = in.nextInt();
+
+        if (a == 0) {
+            System.out.println(0);
+            return;
+        }
+        for ( ; ; ) {
+            if (a == 0) {
+//                System.out.println(0);
+                break;
+            }
+            int x = a % 10;
+            System.out.print(x);
+            a = a / 10;
+        }
+    }
+
+}
