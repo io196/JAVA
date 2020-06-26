@@ -1,1 +1,19 @@
-141
+import java.util.HashSet;
+import java.util.Scanner;
+//输出一行一个数字表示完成所有料理需要多少种不同的材料。
+public class Main_141 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        HashSet<String> hashSet = new HashSet<>();
+        while (scanner.hasNext()) {
+            String s = scanner.nextLine();
+            String[] ss = s.split(" ");
+            for (int i = 0; i < ss.length; i++) {
+                hashSet.add(ss[i]);
+            }
+        }
+        System.out.println(hashSet.size());
+
+    }
+}
