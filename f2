@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main_171 {
+    //输入两个整数,返回两数之和,不得使用算数运算符;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextInt()) {
+            int add = scanner.nextInt();
+            int aug = scanner.nextInt();
+            int sum1 = add ^ aug;
+            int sum2 = add & aug;
+            int sum = sum1 + 2*sum2;
+            System.out.println(sum);
+        }
+
+    }
+}
+//        int a = 1;
+//        int b = 2;
+//        int c = a | b;
+//        System.out.println(c);
+//    public static void main(String[] args) {
+//        int a = 555;
+//        StringBuilder s = new StringBuilder(a);
+//        System.out.println(s.toString());
+//        s.append(222);
+//        System.out.println(s.toString());
+//        StringBuilder stringBuilder = new StringBuilder();
+//    }
