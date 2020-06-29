@@ -1,0 +1,101 @@
+
+import java.util.Scanner;
+//给定数字0-9各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意0不能做首位）。
+public class Main_161{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] arr = new int[10];
+        for (int i = 0; i < 10; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        for (int i = 1; i < 10; i++) {
+            if (arr[i] != 0) {
+                System.out.print(i);
+                arr[i] = arr[i] - 1;
+                break;
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < arr[i]; j++) {
+                System.out.print(i);
+            }
+        }
+    }
+}
+
+//    public static void main(String[] args) {
+//        Scanner in=new Scanner(System.in);
+//        while (in.hasNext()){
+//            String addend=in.nextLine();
+//            String augend=in.nextLine();
+//            System.out.println(AddLongInteger(addend,augend));
+//        }
+//    }
+//    public static String AddLongInteger(String addend,String augend){
+//        char[] a1=addend.toCharArray();
+//        char[] a2=augend.toCharArray();
+//        int result=a1.length>a2.length?a1.length+1:a2.length+1;
+//        char[] c1=new char[result];
+//        char[] b1=new char[a1.length];
+//        char[] b2=new char[a2.length];
+//        for(int i=0;i<a1.length;i++){
+//            b1[i]=a1[a1.length-1-i];
+//        }
+//        for(int i=0;i<a2.length;i++){
+//            b2[i]=a2[a2.length-1-i];
+//        }
+//        for(int i=0;i<c1.length;i++){
+//            c1[i]='0';
+//        }
+//        for(int i=0;i<result-1;i++){
+//            int count=0;
+//            if(b1.length-1-i>=0 && b2.length-1-i>=0){
+//                count=b1[i]-'0'+b2[i]-'0';
+//            }
+//            else if(b1.length-1-i>=0 && b2.length-1-i<0){
+//                count=b1[i]-'0';
+//            }
+//            else if(b1.length-1-i<0 && b2.length-1-i>=0){
+//                count=b2[i]-'0';
+//            }
+//            int value=c1[i]-'0'+count;
+//            c1[i]=(char)(value%10+'0');
+//            c1[i+1]+=value/10;
+//        }
+//        while (c1[result-1]=='0'){
+//            result--;
+//        }
+//        char[] c2=new char[result];
+//        for(int i=0;i<result;i++){
+//            c2[result-1-i]=c1[i];
+//        }
+//        String str=new String(c2);
+//        return str;
+//    }
+//import java.util.Arrays;
+//
+//public class Main_161 {
+//    public static void main(String[] args) {
+//        char i = '9';
+//        char j = '3';
+//        int a = 0;
+////        a = (int)i - 48;
+//        a = i - 48;
+//        int[] q = {1,2,3,4};
+//        String aa = q[0] + "";
+////        String s = s.a
+//        char[] c = {1, 2, 3};
+//        char[] b = {1, 2, 3, '4'};
+//        char[] tmp = new char[c.length>b.length?c.length:b.length];
+//
+//        if (tmp.length == c.length){
+//            tmp = c;
+//        } else {
+//            tmp = b;
+//        }
+//        System.out.println(c[0]);
+//        System.out.println(tmp[3]);
+//        System.out.println(Arrays.toString(tmp));
+//    }
+//}
+//import java.util.Arrays;
