@@ -1,1 +1,40 @@
-201
+import java.util.Scanner;
+//DAN序列,找出给定序列中GC-Ratio最高的子序列
+public class Main_201 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String string = scanner.nextLine();
+            String[] str = string.split("");
+            int min = scanner.nextInt();
+
+            int start = 0;
+            int sum = 0;
+            for (int i = 0; i <= str.length - min; i++) {
+                int count = 0;
+                for (int j = i; j < i + min; j++) {
+                    if (str[j].equals("G") || str[j].equals("C")) {
+                        count++;
+                    }
+                    if (count > sum) {
+                        sum = count;
+                        start = i;
+                    }
+                }
+            }
+            for (int i = start; i < start + min; i++) {
+                System.out.print(str[i]);
+            }
+            System.out.println();
+        }
+    }
+}
+//    Integer a = 59;
+//        int b = 59;
+//        Integer c = Integer.valueOf(59);
+//        Integer d = new Integer(59);
+//        System.out.println(a==b);
+//        System.out.println(a==c);
+//        System.out.println(b==d);
+//        System.out.println(c==d);
