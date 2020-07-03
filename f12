@@ -1,1 +1,93 @@
-成绩排序
+import java.util.*;
+//成绩排序
+//题目：输入任意（用户，成绩）序列，可以获得成绩从高到低或从低到高的排列,相同成绩
+//        都按先录入排列在前的规则处理。
+public class Main_222 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            int num = in.nextInt();
+            int sort = in.nextInt();
+            LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+            for (int i = 0; i < num; i++) {
+                String name = in.next();
+                name = i + ":" + name;
+                int score = in.nextInt();
+                map.put(name, score);
+            }
+            LinkedList<Map.Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
+
+            if (sort == 0) {
+                Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
+                        return e2.getValue() - e1.getValue();
+                    }
+                });
+
+            } else {
+                Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
+                        return e1.getValue() - e2.getValue();
+                    }
+                });
+            }
+            for (Map.Entry<String, Integer> entry : list) {
+                String name = entry.getKey();
+                String trueName = name.substring(name.indexOf(":") + 1);
+                System.out.println(trueName + " " + entry.getValue());
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+//import java.util.HashMap;
+//import java.util.LinkedHashMap;
+//import java.util.Map;
+//import java.util.Scanner;
+//
+//public class Main_222 {
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        while (scanner.hasNext()) {
+//            int num = scanner.nextInt();
+//            int sort = scanner.nextInt();
+////            LinkedHashMap<String,Integer> linkedHashMap = new LinkedHashMap<>();
+////            for (int i = 0; i < num; i++) {
+////                String name = scanner.next();
+////                int score = scanner.nextInt();
+////                linkedHashMap.put(name,score);
+////            }
+//            Map<String,Integer> map = new HashMap<>();
+//            for (int i = 0; i < num; i++) {
+//                String name = scanner.next();
+//                int score = scanner.nextInt();
+//                map.put(name,score);
+//            }
+//            if (sort == 0) {
+//                shunxu(map,num);
+//            }
+//
+//
+//        }
+//    }
+//
+//    private static void shunxu(Map<String, Integer> map, int num) {
+//        int comp = 0;
+//        for (int i = 0; i < num; i++) {
+//            map.
+//        }
+//    }
+//}
