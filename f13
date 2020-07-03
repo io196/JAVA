@@ -1,0 +1,28 @@
+import java.util.Arrays;
+//微信红包
+//春节期间小明使用微信收到很多个红包，非常开心。在查看领取红包记录时发现，某个红包金额出现的次数超过了红包总数的一半。
+// 请帮小明找到该红包金额。写出具体算法思路和代码实现，要求算法尽可能高效。
+
+/*思路:
+先把给定的数组排序
+题中要求得的是超过数组一半的元素,那么这个数肯定在已排序数组的中间
+(无论数组是奇数个还是偶数个,直接求 n/2 位置的元素个数,因为要求得的是超过数组元素个数的一半)
+* */
+public class Main_231 {
+    public int getValue(int[] gifts, int n) {
+        // write code here
+        int count = 0;
+        Arrays.sort(gifts);     //排序
+        int mid = gifts[n/2];
+        for (int i = 0; i < n; i++) {
+            if (gifts[i] == mid) {
+                count++;
+            }
+        }
+        if (count > (n/2)) {
+            return mid;
+        } else {
+            return 0;
+        }
+    }
+}
