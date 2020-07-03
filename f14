@@ -1,0 +1,77 @@
+//链表分割
+public class Main_232 {
+
+        static class ListNode {
+            int val;
+            ListNode next = null;
+
+            ListNode(int val) {
+                this.val = val;
+            }
+        }
+
+        public ListNode partition(ListNode pHead, int x) {
+            if(pHead==null){
+                return null;
+            }
+            ListNode nodex=new ListNode(x);
+            ListNode newHead=new ListNode(0);
+            newHead.next=nodex;
+            ListNode before=newHead;
+            ListNode after=nodex;
+            ListNode walkNode=pHead;
+            boolean isexist=false;
+            while(walkNode!=null){
+                if(walkNode.val<x){
+                    ListNode node=new ListNode(walkNode.val);
+                    before.next=node;
+                    node.next=nodex;
+                    before=node;
+                }
+                else if(walkNode.val>=x){
+                    ListNode node=new ListNode(walkNode.val);
+                    after.next=node;
+                    after=node;
+                }
+                walkNode=walkNode.next;
+            }
+            before.next=nodex.next;
+            return newHead.next;
+        }
+
+
+
+//        static ListNode partition(ListNode pHead, int x) {
+//            // write code here
+//            ListNode small = new ListNode(-1);
+//            ListNode mid = new ListNode(-1);
+//            mid = small.next;
+//            ListNode noSmall = new ListNode(-1);
+//            ListNode last = new ListNode(-1);
+//            last = noSmall.next;
+//
+//            while (pHead.next != null) {
+//                if (pHead.val < x) {
+//                    mid = pHead;
+//                    mid = mid.next;
+//                } else {
+//                    last = pHead;
+//                    last = last.next;
+//                }
+//                pHead = pHead.next;
+//            }
+//            if (pHead.val < x) {
+//                mid = pHead;
+//                mid = mid.next;
+//            } else {
+//                last = pHead;
+//                last = last.next;
+//            }
+//
+//            mid.next = noSmall.next;
+//
+//            return small.next;
+//        }
+
+
+}
