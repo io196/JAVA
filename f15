@@ -1,1 +1,20 @@
-兔子总数
+import java.util.Scanner;
+//兔子总数
+//开局一只兔子,从第三个月开始每个月生一只(第三个月开始生),小兔子长到第三个月也开始生.
+//输入月份,求最终生几只兔子.
+public class Main_241 {
+    public static int getTotalCount(int monthCount) {
+        if (monthCount <= 2 ) {
+            return 1;
+        }
+        return getTotalCount(monthCount - 1) + getTotalCount(monthCount - 2);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            int monthcount = scanner.nextInt();
+            System.out.println(getTotalCount(monthcount));
+        }
+    }
+}
