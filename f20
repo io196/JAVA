@@ -1,0 +1,35 @@
+import java.util.Scanner;
+//小易的升级之路
+public class Main_271 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            int num = scanner.nextInt();
+            int power = scanner.nextInt();
+            int[] boss = new int[num];
+            for (int i = 0; i < num; i++) {
+                boss[i] = scanner.nextInt();
+            }
+            for (int i = 0; i < num; i++) {
+                if (power < boss[i]) {
+                    power = power + lose(power, boss[i]);
+                } else {
+                    power = power + boss[i];
+                }
+            }
+            System.out.println(power);
+        }
+    }
+
+    private static int lose(int power, int boss) {
+        int pow = power;
+        int bo = boss;
+        while (pow % bo != 0) {
+            int tmp = bo;
+            bo = pow % bo;
+            pow = tmp;
+        }
+        return bo;
+    }
+}
