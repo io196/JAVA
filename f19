@@ -1,0 +1,27 @@
+
+public class Main_262 {
+    public static void main(String[] args) {
+        //十进制数转换为二进制数的字符串形式    s = Integer.toBinaryString(num)
+        int num = 100000;
+        String numS = Integer.toBinaryString(num);
+        System.out.println(numS.toString());
+
+        //-----------------------------------------------------------
+
+        //将对应进制字符串转换为十进制数字   num = Integer.parseInt(对应进制字符串, 对应进制);
+        //例: 字符串"1000" 转换为2进制   得到十进制int类型 8
+        //                转换为3进制                    27
+        String num1 = "110";
+        int num1S = Integer.parseInt(num1,4);
+        System.out.println(num1S);
+        //-----------------------------------------------------------
+
+        //字符串转换为数字
+        String s = "120";
+        int ns = Integer.parseInt(s);
+        System.out.println(ns);
+
+        long ls = Long.parseLong("1000000000000");
+        System.out.println(ls);
+    }
+}
