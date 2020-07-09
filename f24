@@ -1,1 +1,27 @@
-291
+import java.util.Scanner;
+//数字之和
+//给一个整数,求他的各位数字之和,以及该数平方的各位数字之和
+public class Main_291 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String num = scanner.next();
+            String[] str = num.split("");
+            int sumN = 0;
+            for (int i = 0; i < str.length; i++) {
+                sumN = sumN + Integer.parseInt(str[i]);
+            }
+            System.out.print(sumN + " ");
+
+            int num1 = Integer.parseInt(num);
+            String pow = String.valueOf(num1 * num1);
+            String[] str1 = pow.split("");
+            int sumS = 0;
+            for (int i = 0; i < str1.length; i++) {
+                sumS = sumS + Integer.parseInt(str1[i]);
+            }
+            System.out.println(sumS);
+        }
+    }
+}
