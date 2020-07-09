@@ -1,0 +1,63 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+//记票统计
+public class Main_292 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            Map<String,Integer> map = new LinkedHashMap<>();
+            int num = scanner.nextInt();
+            for (int i = 0; i < num; i++) {
+                map.put(scanner.next(),0);
+            }
+            int voteNum = scanner.nextInt();
+            int Invalid = 0;
+            for (int i = 0; i < voteNum; i++) {
+                String vote = scanner.next();
+                if (map.containsKey(vote)) {
+                    map.put(vote,map.get(vote) + 1);
+                } else {
+                    Invalid++;
+                }
+            }
+
+            for (Map.Entry entry : map.entrySet()) {
+                System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
+            System.out.println("Invalid : " + Invalid);
+        }
+    }
+}
+
+
+//=========================================
+
+//import java.util.*;
+//public class Main {
+//    public static void main(String[] args) {
+//        Scanner sc=new Scanner(System.in);
+//        while(sc.hasNext()){
+//            Map<String,Integer> map=new LinkedHashMap<>();
+//            int n=sc.nextInt();
+//            for(int i=0;i<n;i++){
+//                map.put(sc.next(),0);
+//            }
+//            int voteNumber =sc.nextInt();
+//            int invalid=0;
+//            for(int j=0;j<voteNumber;j++){
+//                String vote=sc.next();
+//                if(map.get(vote)==null){
+//                    invalid++;
+//                }else {
+//                    map.put(vote,map.get(vote)+1);
+//                }
+//            }
+//            for(Map.Entry entry : map.entrySet()){
+//                System.out.println(entry.getKey()+" : "+entry.getValue());
+//            }
+//            System.out.println("Invalid : "+invalid);
+//        }
+//    }
+//}
