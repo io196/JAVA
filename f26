@@ -1,0 +1,25 @@
+import java.util.Scanner;
+//找x
+public class Main_301 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            int num = scanner.nextInt();
+            int[] arr = new int[num];
+            for (int i = 0; i < num; i++) {
+                arr[i] = scanner.nextInt();
+            }
+            int find = scanner.nextInt();
+            for (int i = 0; i < num; i++) {
+                if (find == arr[i]) {
+                    System.out.println(i);
+                    break;
+                }
+                if (i == num - 1) {
+                    System.out.println(-1);
+                }
+            }
+        }
+    }
+}
