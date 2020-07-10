@@ -1,1 +1,122 @@
-302
+import java.util.Scanner;
+
+//public class Main_302{
+//    public static void main(String[] args){
+//        Scanner sc = new Scanner(System.in);
+//        String s="";
+//        while(sc.hasNext()){
+//            s = sc.next();//输入IP地址,10.0.3.193
+//
+//            if(s.contains(".")){//IP地址转十进制
+//                System.out.println(ipToShi(s));
+//            }
+//            else{//十进制转IP地址
+//                System.out.println(shiToIp(s));
+//            }
+//        }
+//        sc.close();
+//    }
+//
+//    public static long ipToShi(String s){
+//        String[] ss = s.split("\\.");//10,0,3,193
+//        int[] a = new int[4];
+//        String hexRes = "";
+//        String weiString = "";
+//        for(int i=0;i<4;i++){
+//            a[i]=Integer.parseInt(ss[i]);//分段字符串转十进制10,0,3,193
+//            weiString = Integer.toBinaryString(a[i]);
+//            while(weiString.length()<8){
+//                weiString="0"+weiString;
+//            }
+//            hexRes = hexRes + weiString;//int类型转二进制字符串，并组合
+//        }
+//        //二进制字符串 转 十进制
+//        long decRes = Long.parseLong(hexRes,2);//二进制字符串转十进制
+//        return decRes;
+//    }
+//
+//    public static String shiToIp(String s){
+//        long b = Long.parseLong(s);//字符串转整型
+//        String str = "";
+//        while(b != 0){//通过拼接的方式将十进制整型转为二进制字符串
+//            str = b%2 + str;
+//            b = b/2;
+//        }
+//        while(str.length()<32){
+//            str = "0"+str;
+//        }
+//        String s1 = str.substring(0,8);
+//        String s2 = str.substring(8,16);
+//        String s3 = str.substring(16,24);
+//        String s4 = str.substring(24,32);
+//        //二进制字符串转十进制整型，再拼接"."后转字符串输出
+//        return Integer.parseInt(s1,2)+"."+Integer.parseInt(s2,2)+"."+Integer.parseInt(s3,2)+"."+Integer.parseInt(s4,2);
+//    }
+//}
+
+
+public class Main_302 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String ip = sc.nextLine();
+            String ip10 = sc.nextLine();
+            IpTo10(ip);
+            TenToIP(ip10);
+        }
+    }
+
+    private static void IpTo10(String ip){
+        //ip地址转换为十进制IP地址
+        //1.按“.”分割，得到四个字符串，转化为整数
+        //2、通过Integer.toBinaryString(Integer.parseInt(s[i]))得到每个整数对应的二进制序列,如果长度不为8，需要自行在前面加0
+        //3.组合每个数的二进制序，然后通过Long.parseLong(sb.toString(),2),得到此二进制对应的十进制数。
+        String[] s = ip.split("\\.");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i<4;i++) {
+            String t= Integer.toBinaryString(Integer.parseInt(s[i]));//整形整数转为二进制
+            if (t.length() < 8) {//由于如果高位为0，会缺省“，”，所以需要自行补充高位缺失的0
+                int diff = 8-t.length();
+                StringBuilder sx = new StringBuilder();
+                for (int j = 0; j<diff; j++) {
+                    sx.append("0");
+                }
+                t = sx.toString() + t;
+            }
+            sb.append(t);
+        }
+        long res = Long.parseLong(sb.toString(),2);
+        System.out.println(res);
+    }
+
+    private static void TenToIP(String ip10) {
+        //十进制IP地址为IP地址
+        //1.通过Long.toBinaryString(Long.parseLong(ip10)) 得到此十进制IP地址对应的二进制序列，
+        //不足32时需要自行在高位补0
+        //2.每隔8个比特为进行划分，共得到4部分
+        //3.每部分分别通过Integer.parseInt(four[i],2)得到对应十进制数，然后用“.”连接得到最终的IP地址
+        String bin = Long.toBinaryString(Long.parseLong(ip10)); //长整形整数转为二进制
+        if (bin.length() < 32) {
+            int diff = 32 - bin.length();
+            StringBuilder sb= new StringBuilder();
+            for (int i =0;i< diff; i++) {
+                sb.append("0");
+            }
+            bin = sb.toString() + bin;
+        }
+        String[] four = new  String[4];
+        four[0] = bin.substring(0,8);//取得每个部分
+        four[1] = bin.substring(8,16);
+        four[2] = bin.substring(16,24);
+        four[3] = bin.substring(24,32);
+        StringBuilder s = new StringBuilder();
+        for(int i = 0; i < 4; i++) {
+            s.append(Integer.parseInt(four[i],2));
+            if (i != 3) {
+                s.append(".");
+            }
+        }
+        System.out.println(s.toString());
+    }
+}
+
