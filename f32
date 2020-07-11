@@ -1,0 +1,20 @@
+import java.util.Scanner;
+//验证守形数
+public class Main_011 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            int num = scanner.nextInt();             //要判断的数 num
+            String str = ""+ num;                    //求num的位数
+            int wei = str.length();
+            int pow = num * num;                     //num的平方
+
+            if ((pow % Math.pow(10,wei)) == num) {   //取出num平方后和num相同位数的数 , 判断是否相等
+                System.out.println("Yes!");
+            } else {
+                System.out.println("No!");
+            }
+        }
+    }
+}
