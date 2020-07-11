@@ -1,0 +1,41 @@
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+//测试有无缓冲区的效率差别
+public class IO4 {
+    public static void main(String[] args) {
+//        testNoBuffer();
+        testBuffer();
+    }
+
+    private static void testNoBuffer() {
+        long beg = System.currentTimeMillis();
+
+        try (FileInputStream fileInputStream = new FileInputStream("E:\\code\\IO练习/view.jpg");
+        ) {
+            int len = -1;
+            while ((len = fileInputStream.read()) != -1) {
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("no buffer: " + (System.currentTimeMillis() - beg) + " ms");
+    }
+
+    private static void testBuffer() {
+        long beg = System.currentTimeMillis();
+
+        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("E:\\code\\IO练习/view.jpg"));
+        ) {
+            int len = -1;
+            while ((len = bufferedInputStream.read()) != -1) {
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("have buffer: " + (System.currentTimeMillis() - beg) + " ms");
+    }
+}
