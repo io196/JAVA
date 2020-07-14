@@ -1,0 +1,17 @@
+import java.util.Scanner;
+//说反话
+public class Main_041 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String in = scanner.nextLine();
+            String[] string = in.split(" ");
+            int len = string.length;
+            System.out.print(string[len - 1]);
+            for (int i = len - 2; i >= 0; i--) {
+                System.out.print(" " + string[i]);
+            }
+        }
+    }
+}
