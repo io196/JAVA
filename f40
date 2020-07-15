@@ -1,0 +1,30 @@
+import java.util.Scanner;
+//在霍格沃茨找零钱
+public class Main_061 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String should = scanner.next();
+            String pay = scanner.next();
+
+            int ret = cac(pay) - cac(should);
+            if (ret < 0) {
+                System.out.print("-");
+                ret = -ret;
+            }
+            System.out.print((ret / (29 * 17)) + ".");
+            System.out.print(((ret % (29 * 17)) / 29) + ".");
+            System.out.print(((ret % (29 * 17)) % 29));
+
+        }
+    }
+
+    public static int cac(String in) {
+        String[] inn = in.split("[.]");
+        int sum = Integer.parseInt(inn[2]);
+        sum = sum + Integer.parseInt(inn[1]) * 29;
+        sum = sum + Integer.parseInt(inn[0]) * 29 * 17;
+        return sum;
+    }
+}
