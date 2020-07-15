@@ -1,1 +1,42 @@
-042
+import java.util.*;
+//简单错误记录
+public class Main_042{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Integer> map = new LinkedHashMap<>();
+        while (scanner.hasNext()) {
+            String str = scanner.next();
+            int n = scanner.nextInt();
+            int index = str.lastIndexOf("\\");
+            String name = index == -1 ? str : str.substring(index + 1);
+            String key = name + " " + String.valueOf(n);
+            if (!map.containsKey(key)) {
+                map.put(key, 1);
+            } else {
+                map.put(key, map.get(key) + 1);
+            }
+        }
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getValue() > o2.getValue() ? -1 : o1.getValue().equals(o2.getValue()) ? 0 : 1;
+            }
+        });
+        int m = 0;
+        for (Map.Entry<String, Integer> mx : list) {
+            if (m >= 8) {
+                break;
+            }
+            String[] k = mx.getKey().split(" ");
+            String fName = k[0];
+            if (fName.length() > 16) {
+                fName = fName.substring(fName.length() - 16);
+            }
+            String line = k[1];
+            int count = mx.getValue();
+            System.out.println(fName + " " + line + " " + count);
+            m++;
+        }
+    }
+}
