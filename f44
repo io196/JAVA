@@ -1,0 +1,30 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+//Broken KeyBoard
+public class Main_081 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String good = scanner.nextLine();
+            String broke = scanner.nextLine();
+
+            String[] g = good.toUpperCase().split("");
+            String[] b = broke.toUpperCase().split("");
+
+            Map<String,Integer> map = new LinkedHashMap<>();
+            int j = 0;
+            for (int i = 0; i < g.length; i++) {
+                if (j < b.length && g[i].equals(b[j])) {
+                  j++;
+                } else {
+                    map.put(g[i], 0);
+                }
+            }
+            for (String key : map.keySet()) {
+                System.out.print(key);
+            }
+        }
+    }
+}
