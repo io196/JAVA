@@ -1,1 +1,83 @@
-071
+import java.util.Scanner;
+//锤子剪刀布
+public class Main_071 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //甲乙两人,以甲为记录,甲胜即乙负;
+        int win = 0;
+        int lose = 0;
+        int equ = 0;
+        int winC = 0;
+        int winB = 0;
+        int winJ = 0;
+        int loseC = 0;
+        int loseB = 0;
+        int loseJ = 0;
+        while (scanner.hasNext()) {
+            int num = scanner.nextInt();
+            //二维数组存甲乙两人手势
+            String[][] in = new String[num][2];
+            for (int i = 0; i < num; i++) {
+                in[i][0] = scanner.next();
+                in[i][1] = scanner.next();
+
+                //甲出C的情况
+                if (in[i][0].equals("C")) {
+                    if (in[i][1].equals("C")) { //乙出C
+                        equ++;
+                    } else if (in[i][1].equals("J")) { //乙出J
+                        win++;
+                        winC++;
+                    } else { //乙出B
+                        lose++;
+                        loseB++;
+                    }
+                 //甲出J
+                } else if (in[i][0].equals("J")) {
+                    if (in[i][1].equals("C")) {
+                        lose++;
+                        loseC++;
+                    } else if (in[i][1].equals("J")) {
+                        equ++;
+                    } else {
+                        win++;
+                        winJ++;
+                    }
+                 //甲出B
+                } else {
+                    if (in[i][1].equals("C")) {
+                        win++;
+                        winB++;
+                    } else if (in[i][1].equals("J")) {
+                        lose++;
+                        loseJ++;
+                    } else {
+                        equ++;
+                    }
+                }
+            }
+            //胜负平结果
+            System.out.println(win + " " + equ + " " + lose);
+            System.out.println(lose + " " + equ + " " + win);
+
+            //甲赢的最多的手势
+            if (winB >= winC && winB >= winJ) {
+                System.out.print("B ");
+            } else if (winC >= winJ) {
+                System.out.print("C ");
+            } else {
+                System.out.print("J ");
+            }
+
+            //乙赢的最多的手势
+            if (loseB >= loseC && loseB >= loseJ) {
+                System.out.print("B");
+            } else if (loseC >= loseJ) {
+                System.out.print("C");
+            } else {
+                System.out.print("J");
+            }
+
+        }
+    }
+}
