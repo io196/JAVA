@@ -1,1 +1,22 @@
-082
+import java.util.Scanner;
+//球的半径和体积
+public class Main_082 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            int[] dian = new int[6];
+            for (int i = 0; i < 6; i++) {
+                dian[i] = scanner.nextInt();
+            }
+
+            double r = Math.sqrt((dian[3] - dian[0]) * (dian[3] - dian[0]) + (dian[4] - dian[1]) * (dian[4] - dian[1])
+                                + (dian[5] - dian[2]) * (dian[5] - dian[2]));
+
+            System.out.print(String.format("%.3f",r) + " ");
+
+            double V = (4/3.0) * r * r * r * Math.acos(-1);
+            System.out.print(String.format("%.3f",V));
+        }
+    }
+}
