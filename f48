@@ -1,1 +1,24 @@
-101
+import java.util.Scanner;
+//字母统计
+//对每个案例按A-Z的顺序输出其中大写字母出现的次数
+public class Main_101 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String in = scanner.nextLine();
+            int[] count = new int[26];
+            for (int i = 0; i < in.length(); i++) {
+                char ch = in.charAt(i);
+                if (ch >= 'A' && ch <= 'Z') {
+                    count[ch - 'A']++;
+                }
+            }
+            for (int i = 0; i < 26; i++) {
+//                System.out.printf("%c:%d%n", ('A'+i), count[i] );
+                char out = (char) ('A' + i);
+                System.out.println(out + ":" + count[i] );
+            }
+        }
+    }
+}
