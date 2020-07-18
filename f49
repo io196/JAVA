@@ -1,0 +1,26 @@
+import java.util.Scanner;
+//进制转换
+public class Main_102 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String str = scanner.next();
+            char[] ch = str.toCharArray();
+            int sum = 0;
+            for (int i = 2; i < ch.length; i++) {
+                if (ch[i] >= 0 && ch[i] <= 9) {
+                    sum = (int) (sum + Math.pow(16, ch.length-3) * ch[i]);
+                } else {
+                    sum = (int) (sum + Math.pow(16, ch.length-3) * (ch[i] - 55));
+                }
+            }
+//            String ss = sum+"";
+//            String[] out = ss.split("");
+//            for (int i = 0; i < out.length; i++) {
+//                System.out.print(out[i]);
+//            }
+            System.out.println(sum);
+        }
+    }
+}
