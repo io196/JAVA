@@ -1,0 +1,33 @@
+import java.util.Arrays;
+import java.util.Scanner;
+//木棒拼图
+public class Main_111 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            int num = scanner.nextInt();
+            int[] put = new int[num];
+            int sum = 0;
+            int count = 0;
+            for (int i = 0; i < num; i++) {
+                if (scanner.nextInt() == 1) {
+                    put[i] = scanner.nextInt();
+                    sum = sum + put[i];
+                    count++;
+                } else {
+                    sum = sum - scanner.nextInt();
+                    count--;
+                }
+
+                Arrays.sort(put);
+
+                if (count > 2 && sum - put[i] > 0) {
+                    System.out.println("Yes");
+                } else {
+                    System.out.println("No");
+                }
+            }
+        }
+    }
+}
