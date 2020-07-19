@@ -1,0 +1,19 @@
+//最近公共祖先
+public class Main_121 {
+    public int getLCA(int a, int b) {
+        if (a == b || a == b/2) {
+            return a;
+        }
+        if (a/2 == b) {
+            return b;
+        }
+        while (a != b) {
+            if (a > b) {
+                a = a / 2;
+            } else {
+                b = b / 2;
+            }
+        }
+        return a;
+    }
+}
