@@ -1,0 +1,17 @@
+import java.util.Scanner;
+//句子逆序
+public class Main_132 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String sentence = scanner.nextLine();
+
+            String[] st = sentence.split(" ");
+            System.out.print(st[st.length - 1]);
+            for (int i = st.length - 2; i >= 0; i--) {
+                System.out.print(" " + st[i]);
+            }
+        }
+    }
+}
