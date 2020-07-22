@@ -1,1 +1,68 @@
-142
+import java.util.*;
+//单调栈结构
+public class Main_142 {
+    public static int[][] getNearLessRepeat(int[] arr) {
+        ArrayDeque<List<Integer>> stack = new ArrayDeque<>();
+        int[][] res = new int[arr.length][2];
+        for (int i = 0; i < arr.length; i++) {
+            while (!stack.isEmpty() && arr[i] < arr[stack.peek().get(0)]) {
+                List<Integer> topList = stack.pop();
+                int leftLessIdx = stack.isEmpty() ? -1 : stack.peek().get(stack.peek().size() - 1);
+                for (Integer n : topList) {
+                    res[n][0] = leftLessIdx;
+                    res[n][1] = i;
+                }
+            }
+            if (!stack.isEmpty() && arr[i] == arr[stack.peek().get(0)]) {
+                stack.peek().add(i);
+            } else {
+                List<Integer> list = new ArrayList<>();
+                list.add(i);
+                stack.push(list);
+            }
+        }
+        while (!stack.isEmpty()) {
+            List<Integer> topList = stack.pop();
+            int leftLessIdx = stack.isEmpty() ? -1 : stack.peek().get(stack.peek().size() - 1);
+            for (Integer n : topList) {
+                res[n][0] = leftLessIdx;
+                res[n][1] = -1;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int[][] res = getNearLessRepeat(arr);
+        for (int i = 0; i < n; i++) {
+            System.out.println(res[i][0] + " " + res[i][1]);
+        }
+    }
+}
+
+
+//import java.util.Scanner;
+//import java.util.Stack;
+//
+//public class Main_142 {
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        while (scanner.hasNext()) {
+//            int num = scanner.nextInt();
+//            int[] arr = new int[num];
+//            for (int i = 0; i < num; i++) {
+//                arr[i] = scanner.nextInt();
+//            }
+//
+//            Stack<Integer> stack = new Stack<>();
+//
+//        }
+//    }
+//}
