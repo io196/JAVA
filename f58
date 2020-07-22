@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+//电话号码
+public class Main_201 {
+    public static void main(String[] args) {
+        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String num = "222333444555666777788899991234567890";
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            int line = scanner.nextInt();
+            ArrayList<String> list = new ArrayList<>();
+            for (int i = 0; i < line; i++) {
+                String en = scanner.next();
+                en = en.replace("-","");
+                String res = "";
+                for (int j = 0; j < 7; j++) {
+                    res += num.charAt(str.indexOf(en.charAt(j) + ""));
+                }
+                res = res.substring(0,3) + "-" + res.substring(3,7);
+                if (!list.contains(res)) {
+                    list.add(res);
+                }
+            }
+            Collections.sort(list);
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i));
+            }
+            System.out.println();
+        }
+    }
+}
