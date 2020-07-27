@@ -1,0 +1,41 @@
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+
+public class UDPEchoServer1 {
+    // 对于一个服务器程序来说, 核心流程也是要分成两步.
+    // 1. 进行初始化操作 (实例化 Socket 对象)
+    // 2. 进入主循环, 接受并处理请求. (主循环就是一个 "死循环")
+    //   a) 读取数据并解析
+    //   b) 根据请求计算响应
+    //   c) 把响应结果写回到客户端.
+    private DatagramSocket socket = null;
+
+    public UDPEchoServer1(int port) throws SocketException {
+        socket = new DatagramSocket(port);
+    }
+
+    public void start() throws IOException {
+        System.out.println("服务器启动");
+        while (true) {
+            DatagramPacket requestPacket = new DatagramPacket(new byte[4096] , 4096);
+            socket.receive(requestPacket);
+            String request = new String(requestPacket.getData(),0,requestPacket.getLength()).trim();
+
+            String response = process(request);
+
+            DatagramPacket responsePacket = new DatagramPacket(response.getBytes(), response.getBytes().length, requestPacket.getSocketAddress());
+            socket.send(responsePacket);
+        }
+    }
+
+    private String process(String request) {
+        return request;
+    }
+
+    public static void main(String[] args) throws IOException {
+        UDPEchoServer1 server = new UDPEchoServer1(9090);
+        server.start();
+    }
+}
