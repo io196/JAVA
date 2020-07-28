@@ -1,1 +1,38 @@
-251
+import java.util.Arrays;
+//左右最值最大差
+public class Main_251 {
+    public static int findMaxGap(int[] A, int n) {
+        // write code here
+        int[] max = new int[n - 1];
+        int k = 0;
+        int max1 = 0;
+        int max2 = 0;
+        for (int i = 1; i < n; i++) {
+            int[] A1 = new int[i];
+            for (int j = 0; j < i; j++) {
+                A1[j] = A[j];
+            }
+            Arrays.sort(A1);
+            max1 = A1[i - 1];
+
+            int[] A2 = new int[n - i];
+            for (int j = 0; j < n - i; j++) {
+                A2[j] = A[i + j];
+            }
+            Arrays.sort(A2);
+            max2 = A2[n - i - 1];
+
+            max[k] = ((max1 - max2) > 0) ? (max1 - max2) : (max2 - max1);
+            k++;
+        }
+        Arrays.sort(max);
+        return max[n - 2];
+    }
+
+    public static void main(String[] args) {
+        int[] A = {2,7,3,1,1,8};
+        int n = A.length;
+        int s = findMaxGap(A, n);
+        System.out.println(s);
+    }
+}
