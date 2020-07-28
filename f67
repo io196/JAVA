@@ -1,0 +1,45 @@
+import java.util.*;
+//顺时针打印矩阵
+public class Main_252 {
+    public int[] clockwisePrint(int[][] mat, int n, int m) {
+        int x1=0,y1=0;
+        int x2=n-1,y2=m-1;
+        int i,j;
+        int len=n*m;
+        int arr[]=new int[len];
+        int flag=1;
+        int count=0;
+        while(true){
+            if(flag==1){
+                for(j=y1;j<=y2;j++){
+                    arr[count++]=mat[x1][j];
+                }
+                if(count==len)break;
+                flag=2;
+                x1++;
+            }else if(flag==2){
+                for(i=x1;i<=x2;i++){
+                    arr[count++]=mat[i][y2];
+                }
+                if(count==len)break;
+                flag=3;
+                y2--;
+            }else if(flag==3){
+                for(j=y2;j>=y1;j--){
+                    arr[count++]=mat[x2][j];
+                }
+                if(count==len)break;
+                flag=4;
+                x2--;
+            }else{
+                for(i=x2;i>=x1;i--){
+                    arr[count++]=mat[i][y1];
+                }
+                if(count==len)break;
+                flag=1;
+                y1++;
+            }
+        }
+        return arr;
+    }
+}
