@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>我是一个页面</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<h1>hello</h1>
+<h2>hello</h2>
+<h3>hello</h3>
+<h4>hello</h4>
+<h5>hello</h5>
+<h6>hello</h6>
+
+<a href="https://www.csdn.net/nav/career">点我跳转到博客</a>
+
+<p>我是个 p 标签</p>
+
+<image src="https://pic.baike.soso.com/ugc/baikepic2/20944/cut-20170612140219-1620825883.jpg/300" />
+
+<form method="get" action="https://baike.sogou.com/v74031.htm?fromTitle=%E9%AB%98%E5%9C%86%E5%9C%86" >
+    <div style="margin-bottom: 10px"><input type="text" placeholder="请输入姓名" name="username"></div>
+    <div style="margin-bottom: 10px"><input type="password" placeholder="请输入密码" name="password"></div>
+    <div><input type="submit" value="提交"></div>
+</form>
+
+
+</body>
+</html>
