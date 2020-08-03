@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+//最小的K个数
+public class Main_832 {
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(input == null || k ==0 || k > input.length)
+            return res;
+        Arrays.sort(input);
+        for (int i = 0; i < k; i++) {
+            res.add(input[i]);
+        }
+
+        return res;
+
+    }
+}
