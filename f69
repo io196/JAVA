@@ -1,1 +1,23 @@
-1
+import java.util.Scanner;
+//字符串中找出连续最长的数字串
+public class Main_831 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String str = scanner.nextLine();
+            String[] numArr = str.split("[^0-9]+");
+            int max = 0;
+            String res = "";
+            for (int i = 0; i < numArr.length; i++) {
+                int len = numArr[i].length();
+                if (len > max) {
+                    res = numArr[i];
+                    max = len;
+                }
+            }
+                System.out.println(res);
+        }
+        scanner.close();
+    }
+}
