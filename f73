@@ -1,0 +1,29 @@
+package Sort;
+
+import java.util.Arrays;
+/*插入排序  稳定排序 数组的初始顺序越接近有序,排序的效率越高
+时间复杂度:
+    最好 : O(n)
+    平均 : O(n^2)
+    最坏 : O(n^2)
+空间复杂度: O(1)
+* */
+public class insertSort {
+    public static void sort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int v = arr[i];
+            int j = i - 1;
+            for ( ; j >= 0 && arr[j] > v; j--) {
+                arr[j + 1] = arr[j];
+            }
+            arr[j + 1] = v;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {9,5,2,7,3,6,8};
+        System.out.println(Arrays.toString(arr));
+        sort(arr);
+        System.out.println(Arrays.toString(arr));;
+    }
+}
