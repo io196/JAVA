@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+import static java.lang.Math.sqrt;
+
+public class test1 {
+    //输出1-1000中的素数
+    public static void main(String[] args) {
+        for (int i = 1; i <= 1000; i++) {
+            int j = 2;
+            for (; j <= sqrt(i); j++) {
+                if (i % j == 0) {
+                    break;
+                }
+            }
+            if (j > sqrt(i)) {
+                System.out.print(i + " ,");
+            }
+        }
+    }
+    //判断一个数是不是素数
+    public static void main1(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (sc.hasNext()) {
+            int num = sc.nextInt();
+            int i = 2;
+            for ( ; i <= sqrt(num); i++) {
+                if (num % i == 0) {
+                    System.out.println(num + "不是素数");
+                    break;
+                }
+            }
+            if (i > sqrt(num)) {
+                System.out.println(num + "是素数");
+            }
+        }
+    }
+}
