@@ -1,0 +1,65 @@
+package Sort;
+
+import java.util.Arrays;
+/*归并排序  稳定排序
+时间复杂度: O(n*log n)
+空间复杂度: O(n)
+* */
+public class mergeSort {
+    public static void sort(int[] arr) {
+        sortHelper(arr, 0, arr.length);
+    }
+
+    private static void sortHelper(int[] arr, int low, int high) {
+        if (high - low <= 1) {
+            return;
+        }
+        int mid = (low + high) / 2;
+        sortHelper(arr, low, mid);
+        sortHelper(arr, mid, high);
+        merge(arr, low, mid, high);
+    }
+
+    private static void merge(int[] arr, int low, int mid, int high) {
+        int cur1 = low;
+        int cur2 = mid;
+        int[] output = new int[high - low];
+        int outputIndex = 0;
+
+        while (cur1 < mid && cur2 < high) {
+            // 此处必须是 <= , 不能是 < .
+            // 如果是 < 是无法保证稳定性的.
+            if (arr[cur1] <= arr[cur2]) {
+                // 把 cur1 位置的元素插入到 output 中
+                output[outputIndex] = arr[cur1];
+                cur1++;
+                outputIndex++;
+            } else {
+                output[outputIndex] = arr[cur2];
+                cur2++;
+                outputIndex++;
+            }
+        }
+        while (cur1 < mid) {
+            output[outputIndex] = arr[cur1];
+            cur1++;
+            outputIndex++;
+        }
+        while (cur2 < high) {
+            output[outputIndex] = arr[cur2];
+            cur2++;
+            outputIndex++;
+        }
+        // 最后一步要把数据从临时空间中拷贝回原来的数组中.
+        for (int i = 0; i < high - low; i++) {
+            arr[low + i] = output[i];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {9,5,2,7,3,6,8};
+        System.out.println(Arrays.toString(arr));
+        sort(arr);
+        System.out.println(Arrays.toString(arr));;
+    }
+}
